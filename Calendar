@@ -1,44 +1,85 @@
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.io.IOException;
+
 public class Calendar {
-    private int year;
-    private int month;
-    private int day;
+    private String name;
+    private String date;
+    private String time;
+    private String location;
+    private String season;
+    private String notes;
 
-    public Calendar(int year, int month, int day) {
-        this.year = year;
-        this.month = month;
-        this.day = day;
+    //constructor
+    public Calendar(String name, String date, String time, String location, String season) {
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.location = location;
+        this.season = season;
+
+        //writes the event to a text file
+        Files.writeString(Path.of("EventStore.txt"), name + " " + date + " " + time + " " 
+         + location + " " + season + "\n", StandardOpenOption.APPEND);
     }
 
-    public int getYear() 
-        return year;
+    public String getName() {
+        return name;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getMonth() {
-        return month;
+    public String getDate() {
+        return date;
     }
 
-    public void setMonth(int month) {
-        this.month = month;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public int getDay() {
-        return day;
+    public String getTime() {
+        return time;
     }
 
-    public void setDay(int day) {
-        this.day = day;
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     @Override
     public String toString() {
         return "Calendar{" +
-                "year=" + year +
-                ", month=" + month +
-                ", day=" + day +
+                "name='" + name + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", location='" + location + '\'' +
+                ", season='" + season + '\'' +
+                ", notes='" + notes + '\'' +
                 '}';
     }
 }
