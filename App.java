@@ -1,14 +1,13 @@
-import java.util;
 import java.io.File;
+import java.util.Scanner;
 
-public void main(String[] args) {
-    public class App{
-
-        private boolean isRunning = true;
+public class App {
+    public static void main(String[] args) {
+        boolean isRunning = true;
 
         Calendar[] calendars = new Calendar[100];
 
-        while (isRunning = true) {
+        while (isRunning) {
             // Prompt the user to add an event or exit
             System.out.println("add your event here or type 'exit' to quit:");
             // Read the user's input
@@ -49,5 +48,4 @@ public void main(String[] args) {
 
     }
         
-    }
 }
