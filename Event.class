@@ -1,0 +1,40 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+public class Event {
+   private String name;
+   private String date;
+   private String location;
+
+   public Event(String var1, String var2, String var3) {
+      this.name = var1;
+      this.date = var2;
+      this.location = var3;
+   }
+
+   public String getName() {
+      return this.name;
+   }
+
+   public void setName(String var1) {
+      this.name = var1;
+   }
+
+   public String getDate() {
+      return this.date;
+   }
+
+   public void setDate(String var1) {
+      this.date = var1;
+   }
+
+   public String getLocation() {
+      return this.location;
+   }
+
+   public void setLocation(String var1) {
+      this.location = var1;
+   }
+
+   public String toString() {
+      return "Event{name='" + this.name + "', date='" + this.date + "', location='" + this.location + "'}";
+   }
+}

@@ -1,23 +1,19 @@
-Public class DateValidator {
+public class DateValidator {
     public static boolean isValidDate(String date) {
-        // Check if the date is in the format "YYYY-MM-DD"
         String regex = "^\\d{4}-\\d{2}-\\d{2}$";
         if (!date.matches(regex)) {
             return false;
         }
 
-        // Split the date into components
         String[] parts = date.split("-");
         int year = Integer.parseInt(parts[0]);
         int month = Integer.parseInt(parts[1]);
         int day = Integer.parseInt(parts[2]);
 
-        // Check if the month is valid
         if (month < 1 || month > 12) {
             return false;
         }
 
-        // Check if the day is valid for the given month
         int[] daysInMonth = {31, (isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         if (day < 1 || day > daysInMonth[month - 1]) {
             return false;

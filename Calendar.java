@@ -1,6 +1,7 @@
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.io.IOException;
+import java.nio.file.StandardOpenOption;
 
 public class Calendar {
     private String name;
@@ -10,7 +11,6 @@ public class Calendar {
     private String season;
     private String notes;
 
-    //constructor
     public Calendar(String name, String date, String time, String location, String season) {
         this.name = name;
         this.date = date;
@@ -18,9 +18,16 @@ public class Calendar {
         this.location = location;
         this.season = season;
 
-        //writes the event to a text file
-        Files.writeString(Path.of("EventStore.txt"), name + " " + date + " " + time + " " 
-         + location + " " + season + "\n", StandardOpenOption.APPEND);
+        try {
+            Files.writeString(
+                Path.of("EventStore.txt"),
+                name + " " + date + " " + time + " " + location + " " + season + System.lineSeparator(),
+                StandardOpenOption.CREATE,
+                StandardOpenOption.APPEND
+            );
+        } catch (IOException e) {
+            System.err.println("Unable to save event: " + e.getMessage());
+        }
     }
 
     public String getName() {
@@ -83,4 +90,3 @@ public class Calendar {
                 '}';
     }
 }
-

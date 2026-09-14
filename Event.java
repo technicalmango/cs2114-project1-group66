@@ -1,4 +1,4 @@
-Pubic class Event {
+public class Event {
     private String name;
     private String date;
     private String location;
