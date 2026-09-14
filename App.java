@@ -1,59 +1,53 @@
-import java.util.Scanner;
+import java.util;
+import java.io.File;
 
-public class App {
-    private static final int MAX_EVENTS = 100;
-    private final Calendar[] calendars = new Calendar[MAX_EVENTS];
-    private final Scanner scanner = new Scanner(System.in);
+public void main(String[] args) {
+    public class App{
 
-    public void run() {
-        boolean isRunning = true;
+        private boolean isRunning = true;
 
-        while (isRunning) {
-            System.out.println("Add your event here or type 'exit' to quit:");
-            String input = scanner.nextLine();
+        Calendar[] calendars = new Calendar[100];
 
-            if (input.equalsIgnoreCase("exit")) {
+        while (isRunning = true) {
+            // Prompt the user to add an event or exit
+            System.out.println("add your event here or type 'exit' to quit:");
+            // Read the user's input
+            Scanner scr = new Scanner(System.in);
+            
+            // Check if the user wants to exit
+            if (scr.nextLine().equals("exit")) 
+            {
                 isRunning = false;
-                System.out.println("Goodbye!");
-                continue;
-            }
-
-            System.out.println("Enter event name:");
-            String name = scanner.nextLine();
-            System.out.println("Enter event date (YYYY-MM-DD):");
-            String date = scanner.nextLine();
-            System.out.println("Enter event time (HH:MM AM/PM):");
-            String time = scanner.nextLine();
-            System.out.println("Enter event location:");
-            String location = scanner.nextLine();
-            System.out.println("Enter event season:");
-            String season = scanner.nextLine();
-            System.out.println("Enter event notes:");
-            String notes = scanner.nextLine();
-
-            if (!DateValidator.isValidDate(date)) {
-                System.out.println("Invalid date format. Please use YYYY-MM-DD.");
-                continue;
-            }
-
-            Calendar calendar = new Calendar(name, date, time, location, season);
-            calendar.setNotes(notes);
-
-            for (int i = 0; i < calendars.length; i++) {
-                if (calendars[i] == null) {
-                    calendars[i] = calendar;
-                    break;
+            } 
+            else 
+            {
+                System.out.println("Entear event name:");
+                    String name = new Scanner(System.in).nextLine();
+                System.out.println("Enter event date (YYYY-MM-DD):");
+                    String date = new Scanner(System.in).nextLine();
+                System.out.println("Enter event time (HH:MM AM/PM):");
+                    String time = new Scanner(System.in).nextLine();
+                System.out.println("Enter event location:");
+                    String location = new Scanner(System.in).nextLine();
+                System.out.println("Enter event season:");
+                    String season = new Scanner(System.in).nextLine();
+                System.out.println("Enter event notes:");
+                    String notes = new Scanner(System.in).nextLine();
+                
+                //creates a calendar object with the user input
+                Calendar calendar = new Calendar(name, date, time, location, season);
+                // Store the calendar object in the array
+                for (int i = 0; i < calendars.length; i++) {
+                    if (calendars[i] == null) {
+                        calendars[i] = calendar;
+                        break;
+                    }
                 }
             }
-
-            System.out.println("Event saved: " + calendar);
         }
 
-        scanner.close();
-    }
 
-    public static void main(String[] args) {
-        new App().run();
+    }
+        
     }
 }
-
