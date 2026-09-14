@@ -1,3 +1,3 @@
 # cs2114-project1-group66
-A repository for CS 2114 Group 66
-[View the PDF](./Deliverable 2 - Specification)
+A repository for CS 2114 Group 66.
+[View Deliverable 2 — Specification](<./Deliverable 2 - Specification.pdf>)
