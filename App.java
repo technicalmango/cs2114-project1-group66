@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class App {
@@ -12,12 +11,39 @@ public class App {
         while (isRunning) {
 
             System.out.println();
-            System.out.println("Add your event here or type 'exit' to quit:");
-            String choice = scanner.nextLine();
+            System.out.println(
+                "Type 'add' to add an event, "
+                + "'list' to view events, or 'exit' to quit:"
+            );
+            String choice = scanner.nextLine().trim();
 
             if (choice.equalsIgnoreCase("exit")) {
                 isRunning = false;
                 System.out.println("Goodbye!");
+                continue;
+            }
+
+            // Display all saved events
+            if (choice.equalsIgnoreCase("list")) {
+                if (calendar.getAll().isEmpty()) {
+                    System.out.println("No events saved yet.");
+                }
+                else {
+                    System.out.println("Your events:");
+
+                    for (Event event : calendar.getAll()) {
+                        System.out.println(event);
+                    }
+                }
+
+                continue;
+            }
+
+            // Reject unknown commands
+            if (!choice.equalsIgnoreCase("add")) {
+                System.out.println(
+                    "Invalid option. Please type add, list, or exit."
+                );
                 continue;
             }
 
@@ -67,7 +93,8 @@ public class App {
                 System.out.println();
                 System.out.println("Event saved successfully!");
                 System.out.println(event);
-            } else {
+            }
+            else {
                 System.out.println();
                 System.out.println("Event could not be saved.");
             }
@@ -77,10 +104,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-
         App app = new App();
-
         app.run();
     }
 }
-
